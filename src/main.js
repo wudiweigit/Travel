@@ -21,6 +21,12 @@ fastClick.attach(document.body)
 import 'styles/iconfont.css'                    //引入自定义的别名
 
 
+// 引入轮播插件
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.css'
+Vue.use(VueAwesomeSwiper)  //使用插件
+
+
 
 
 
