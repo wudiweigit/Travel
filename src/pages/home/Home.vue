@@ -2,6 +2,7 @@
     <div>
        <home-header></home-header>
        <home-swiper></home-swiper>
+       <home-icons></home-icons>
     </div>
     
 </template>
@@ -13,11 +14,15 @@ import HomeHeader from './components/Header'
 // 引入sSwiper组件
 import HomeSwiper from './components/Swiper'
 
+// 引入Icons组件
+import HomeIcons from './components/Icons'
+
 export default{
     name: 'Home',
     components:{
         HomeHeader,
-        HomeSwiper
+        HomeSwiper,
+        HomeIcons
     }
 }
 
