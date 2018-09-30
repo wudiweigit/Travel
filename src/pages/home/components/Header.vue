@@ -9,10 +9,13 @@
             输入城市/景点/游玩主题
 
         </div>
-        <div class="header-right">
-            {{this.city}}
-            <span class="iconfont arrow-icon">&#xe64a;</span>
-        </div>
+        <router-link to="/city">
+            <div class="header-right">
+                {{this.city}}
+                <span class="iconfont arrow-icon">&#xe64a;</span>
+            </div>
+        </router-link>
+            
     </div>
 
 </template>
@@ -36,9 +39,9 @@ export default {
     /*@import '~@/assets/styles/varibles.styl'*/
 /* @import '../../../asstes/styles/varibles.styl' */
 
-@import '~styles/varibles.styl'/* 在 build 的 webpack.base.conf.js配置自定义别名简化引用路径*/
+@import '~styles/varibles.styl'  /* 在 build 的 webpack.base.conf.js配置自定义别名简化引用路径*/
 .header
-    line-height: .86rem
+    line-height: $headerHeight
     display: flex
     background: $bgColor     /*共用颜色样式*/
     color: #fff
@@ -62,6 +65,7 @@ export default {
         width: 1.24rem
         float: right
         text-align: center
+        color: #fff
         .arrow-icon
             font-size: .24rem
             margin-left: -.04rem
