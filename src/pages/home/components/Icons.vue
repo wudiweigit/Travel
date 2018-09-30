@@ -126,33 +126,35 @@
     width: 100%
     padding-bottom: 50%
     overflow: hidden*/
-.icon
-    width: 25%
-    padding-bottom: 25%
-    float: left
-    overflow: hidden
-    position: relative
-    height: 0
-    .icon-img
-        position: absolute
-        left: 0
-        top: 0
-        right: 0
-        bottom: .44rem
-        box-sizing: border-box
-        padding: .1rem
-        .icon-img-content
-            height: 100%
-            display: block
-            margin: 0 auto 
-    .icon-desc
-        position: absolute
-        left: 0
-        right: 0
-        bottom: 0
-        height: .44rem
-        line-height: .44rem
-        text-align: center
-        color: $darkTextColor   /*共用字体颜色样式*/
-        ellipsis()    /*存放共用样式 ...效果*/
+.icons
+    margin-top: .1rem
+    .icon
+        width: 25%
+        padding-bottom: 25%
+        float: left
+        overflow: hidden
+        position: relative
+        height: 0
+        .icon-img
+            position: absolute
+            left: 0
+            top: 0
+            right: 0
+            bottom: .44rem
+            box-sizing: border-box
+            padding: .1rem
+            .icon-img-content
+                height: 100%
+                display: block
+                margin: 0 auto 
+        .icon-desc
+            position: absolute
+            left: 0
+            right: 0
+            bottom: 0
+            height: .44rem
+            line-height: .44rem
+            text-align: center
+            color: $darkTextColor   /*共用字体颜色样式*/
+            ellipsis()    /*存放共用样式 ...效果*/
 </style>

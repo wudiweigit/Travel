@@ -3,6 +3,7 @@
        <home-header></home-header>
        <home-swiper></home-swiper>
        <home-icons></home-icons>
+       <home-recommend></home-recommend>
     </div>
     
 </template>
@@ -17,12 +18,16 @@ import HomeSwiper from './components/Swiper'
 // 引入Icons组件
 import HomeIcons from './components/Icons'
 
+// 引入 Recommend组件
+import HomeRecommend from './components/Recommend'
+
 export default{
     name: 'Home',
     components:{
         HomeHeader,
         HomeSwiper,
-        HomeIcons
+        HomeIcons,
+        HomeRecommend
     }
 }
 
