@@ -2,7 +2,7 @@
     <div>
         <div class="title">热销推荐</div>
         <ul>
-            <li class="item border-bottom" v-for="item of recommendList" :key="item.id">
+            <li class="item border-bottom" v-for="item of list" :key="item.id">
                 <img class="item-img" :src="item.imgUrl" alt="">
    
                 <div class="item-info">
@@ -20,31 +20,9 @@
 
 export default{
     name: 'HomeRecommend',
-    data(){
-        return {
-            recommendList: [{
-                id: '0001',
-                imgUrl: '//img1.qunarzz.com/sight/p0/201406/04/4f597aad25208a233999238c65af9b06.jpg_200x200_d1ea2bd2.jpg',
-                title: '南京珍珠泉水上世界',
-                desc: '高品质天然泉水水上乐园'
-            },{
-                id: '0002',
-                imgUrl: '//img1.qunarzz.com/sight/p0/201406/04/4f597aad25208a233999238c65af9b06.jpg_200x200_d1ea2bd2.jpg',
-                title: '南京珍珠泉水上世界',
-                desc: '高品质天然泉水水上乐园'
-            },{
-                id: '0003',
-                imgUrl: '//img1.qunarzz.com/sight/p0/201406/04/4f597aad25208a233999238c65af9b06.jpg_200x200_d1ea2bd2.jpg',
-                title: '南京珍珠泉水上世界',
-                desc: '高品质天然泉水水上乐园'
-            },{
-                id: '0004',
-                imgUrl: '//img1.qunarzz.com/sight/p0/201406/04/4f597aad25208a233999238c65af9b06.jpg_200x200_d1ea2bd2.jpg',
-                title: '南京珍珠泉水上世界',
-                desc: '高品质天然泉水水上乐园'
-            }]
-        }
-    }
+    props: {
+        list: Array      //接收 home 传过来的值且内容类型为 arry
+    },
 }
 
 

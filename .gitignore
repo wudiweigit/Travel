@@ -5,6 +5,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# 在 gitignore 配置 本地的模拟数据不需要提交到线上
+static/mock     
+
 # Editor directories and files
 .idea
 .vscode

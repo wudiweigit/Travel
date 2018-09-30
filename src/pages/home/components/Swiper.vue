@@ -1,9 +1,11 @@
 <template>
     <div class="wrapper">
-        <swiper :options="swiperOption">
+            <!-- 解决为什么默认选中最后一个轮播 ==》  v-if="list.length"    -->
+        <!-- <swiper :options="swiperOption" v-if="list.length"> -->
+        <swiper :options="swiperOption" v-if="showSwiper">
             <!-- slides -->
             
-            <swiper-slide v-for="item of swiperList" :key="item.id">
+            <swiper-slide v-for="item of list" :key="item.id">
                 <img class="swiper-img" :src="item.imgUrl" alt="">
             </swiper-slide>
         
@@ -18,21 +20,31 @@
 
 export default{
     name: 'HomeSwiper',
+    props: {
+        list: Array     //接收 home 传过来的值且内容类型为 arry
+    },
     data(){
         return{
             swiperOption: {
+                // 标记页码         哪个对象
                 pagination: '.swiper-pagination',
                 loop: true //支持循环轮播
             },
-            swiperList: [{
-                id: '0001',
-                imgUrl: 'http://img1.qunarzz.com/piao/fusion/1807/d5/fe8867e329175202.jpg_750x200_98799354.jpg'
-            },{
-                id: '0002',
-                imgUrl: 'http://img1.qunarzz.com/piao/fusion/1807/29/6a13907ab0f9bf02.jpg_750x200_452cfebe.jpg'
-            }]
+            // swiperList: [{
+            //     id: '0001',
+            //     imgUrl: 'http://img1.qunarzz.com/piao/fusion/1807/d5/fe8867e329175202.jpg_750x200_98799354.jpg'
+            // },{
+            //     id: '0002',
+            //     imgUrl: 'http://img1.qunarzz.com/piao/fusion/1807/29/6a13907ab0f9bf02.jpg_750x200_452cfebe.jpg'
+            // }]
         }
         
+    },
+    computed: {
+        //问题：由于页面刚被加载时轮播图显示最后一张
+        showSwiper(){ 
+            return this.list.length   //通过绑定v-if来判断【如果list是空数组时swiper元素不会被创建只有为list.length才会被创建】
+        }
     }
 }
 

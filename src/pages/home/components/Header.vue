@@ -10,7 +10,7 @@
 
         </div>
         <div class="header-right">
-            城市
+            {{this.city}}
             <span class="iconfont arrow-icon">&#xe64a;</span>
         </div>
     </div>
@@ -19,9 +19,12 @@
 
 <script>
 
-export default{
-    name: 'HomeHeader'
-}
+export default {
+        name: 'HomeHeader',
+        props: {
+            city: String  //接收 home 传过来的值且内容类型为 string
+        }
+    }
 
 </script>
 
