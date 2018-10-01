@@ -5,7 +5,12 @@
         </div>
         <div class="search-content" ref="search" v-show="keyworld">
             <ul>
-                <li class="search-item border-bottom" v-for="item of list" :key="item.id">{{ item.name }}</li>
+                <li class="search-item border-bottom" 
+                v-for="item of list" :key="item.id"
+                @click="handleCityClick( item.name )"
+                >
+                {{ item.name }}
+            </li>
                 <!-- <li class="search-item border-bottom" v-show="hasNoData">没有找到匹配数据</li> -->
                 <li class="search-item border-bottom" v-show="hasNoData">没有找到匹配数据</li>
             </ul>
@@ -61,6 +66,17 @@ export default{
     },
     mounted(){
         this.scroll = new Bscroll(this.$refs.search)
+    },
+    methods: {
+        handleCityClick (city){
+            // alert(city)
+            // 改变 city 调用dispatch方法 【 异步操作】
+            // this.$store.dispatch('changeCity', city)  //派发一个 changeCity的 actions 进行 异步操作
+            //  【 同步操作】
+            this.$store.commit('ChangeCity', city)
+            this.$router.push('/') //进行跳转
+
+        }
     },
 }
 

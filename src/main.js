@@ -26,6 +26,9 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 Vue.use(VueAwesomeSwiper)  //使用插件
 
+//引入 store 组件
+import store from './store/'
+
 
 
 
@@ -36,6 +39,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,     //传入 store
   components: { App },
   template: '<App/>'
 })

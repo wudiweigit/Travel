@@ -7,7 +7,7 @@
                 <div class="title border-topbottom">当前城市</div>
                 <div class="button-list">
                     <div class="button-wrapper">
-                        <div class="button">南京</div>
+                        <div class="button">{{this.$store.state.city}}</div>
                     </div>
                 </div>
             </div>
@@ -15,7 +15,10 @@
                     <!-- 1像素边框  【 border-topbottom】 -->
                     <div class="title border-topbottom">热门城市</div>
                     <div class="button-list">
-                        <div class="button-wrapper" v-for="item of hot" :key="item.id">
+                        <!-- 给每一个内容绑定事件 -->
+                        <div class="button-wrapper" v-for="item of hot" 
+                        :key="item.id" @click="handleCityClick( item.name )"
+                        >
                             <div class="button">{{item.name}}</div>
                         </div>
                         
@@ -24,7 +27,12 @@
             <div class="area" v-for="(item, key) of cities" :key="key" :ref="key">
                 <div class="title border-topbottom">{{ key }}</div>
                 <div class="item-list">
-                    <div class="item border-bottom" v-for="innerItem of item" :key="innerItem.id">{{ innerItem.name }}</div>
+                    <div class="item border-bottom" v-for="innerItem of item" 
+                    :key="innerItem.id"
+                    @click="handleCityClick( innerItem.name )"
+                    >
+                    {{ innerItem.name }}
+                </div>
                     
                 </div>
                
@@ -60,7 +68,17 @@ export default{
                 this.scroll.scrollToElement(element)  // 插件 betterscroll 提供的方法
             }
         }
-    }
+    },
+    methods: {
+        handleCityClick (city){
+            // alert(city)
+            // 改变 city 调用dispatch方法 【 异步操作】
+            // this.$store.dispatch('changeCity', city)  //派发一个 changeCity的 actions 进行 异步操作
+            //  【 同步操作】
+            this.$store.commit('ChangeCity', city)
+            this.$router.push('/') //进行跳转
+        }
+    },
 
 
 }

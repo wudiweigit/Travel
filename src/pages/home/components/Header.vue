@@ -11,7 +11,7 @@
         </div>
         <router-link to="/city">
             <div class="header-right">
-                {{this.city}}
+                {{this.$store.state.city}}
                 <span class="iconfont arrow-icon">&#xe64a;</span>
             </div>
         </router-link>
@@ -25,7 +25,7 @@
 export default {
         name: 'HomeHeader',
         props: {
-            city: String  //接收 home 传过来的值且内容类型为 string
+            // city: String  //接收 home 传过来的值且内容类型为 string
         }
     }
 
