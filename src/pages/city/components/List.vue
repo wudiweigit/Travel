@@ -21,7 +21,7 @@
                         
                     </div>
                 </div>
-            <div class="area" v-for="(item, key) of cities" :key="key">
+            <div class="area" v-for="(item, key) of cities" :key="key" :ref="key">
                 <div class="title border-topbottom">{{ key }}</div>
                 <div class="item-list">
                     <div class="item border-bottom" v-for="innerItem of item" :key="innerItem.id">{{ innerItem.name }}</div>
@@ -43,10 +43,23 @@ export default{
     name: 'CityList',
     props: {
         hot: Array,
-        cities: Object
+        cities: Object,
+        letter: String   // 7. 在 props 中子组件接收 父组件接收过来的 参数
     },
     mounted(){
         this.scroll = new Bscroll(this.$refs.wrapper)   //页面挂载完毕创建 滚动实例
+    },
+    watch: { // 8. 对letter 参数进行监听
+        letter(){
+            // console.log(this.letter)
+            if(this.letter){
+                // const element = this.$refs[ this.letter ]   // 这样获取的是个数组
+
+                // 9. 通过 $refs 获取这个字母对应的 class="area" 的区域
+                const element = this.$refs[ this.letter ][0]  
+                this.scroll.scrollToElement(element)  // 插件 betterscroll 提供的方法
+            }
+        }
     }
 }
 

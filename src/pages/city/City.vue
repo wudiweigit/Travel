@@ -2,8 +2,10 @@
     <div>
         <city-header></city-header>
         <city-search></city-search>
-        <city-list :cities="allcities" :hot="hotCities"></city-list>
-        <city-alphabet :cities="allcities"></city-alphabet>
+        <!-- 6.在父组件中命相关属性 :letter="letter" -->
+        <city-list :cities="allcities" :hot="hotCities" :letter="letter"></city-list>
+        <!-- 兄弟/非父子组件的传值 【 3.监听 $emit 传过来的事件（change） 】-->
+        <city-alphabet :cities="allcities" @change="hadleLetterChange"></city-alphabet>
     </div>
     
 
@@ -26,7 +28,8 @@ export default{
     data(){
         return {
             allcities: {},
-            hotCities: []
+            hotCities: [],
+            letter: ''      // 5. 初始化接收参数数据 
         }
     },
     components: {
@@ -48,6 +51,11 @@ export default{
                 this.allcities = res.data.cities
                 this.hotCities = res.data.hotCities
             }
+        },
+        // 4. 定义个事件监听的方法 ，并接受参数
+        hadleLetterChange ( letter ){
+            // console.log(letter)
+            this.letter = letter
         }
 
 
