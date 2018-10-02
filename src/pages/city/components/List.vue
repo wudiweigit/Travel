@@ -7,7 +7,7 @@
                 <div class="title border-topbottom">当前城市</div>
                 <div class="button-list">
                     <div class="button-wrapper">
-                        <div class="button">{{this.$store.state.city}}</div>
+                        <div class="button">{{ this.currentCity }}</div>
                     </div>
                 </div>
             </div>
@@ -46,6 +46,8 @@
 // 引入滚动组件
 import Bscroll from 'better-scroll'
 
+import { mapState, mapMutations } from 'vuex'    //vuex 提供了个高级API
+
 
 export default{
     name: 'CityList',
@@ -54,8 +56,15 @@ export default{
         cities: Object,
         letter: String   // 7. 在 props 中子组件接收 父组件接收过来的 参数
     },
+    computed: {
+        //展开运算符
+        ...mapState({
+            currentCity: 'city'   //我想把Vuex中 city 这个公共的数据映射到我这个组件的计算属性（computed）里映射过来的名字叫 currentCity
+        })    
+    },
     mounted(){
         this.scroll = new Bscroll(this.$refs.wrapper)   //页面挂载完毕创建 滚动实例
+
     },
     watch: { // 8. 对letter 参数进行监听
         letter(){
@@ -75,9 +84,11 @@ export default{
             // 改变 city 调用dispatch方法 【 异步操作】
             // this.$store.dispatch('changeCity', city)  //派发一个 changeCity的 actions 进行 异步操作
             //  【 同步操作】
-            this.$store.commit('ChangeCity', city)
+            // this.$store.commit('ChangeCity', city)
+            this.ChangeCity(city)
             this.$router.push('/') //进行跳转
-        }
+        },
+        ...mapMutations([ 'ChangeCity' ]) //我们有个mutations叫做 ChangeCity 然后我把mutations映射到我这个组件里面一个名字叫做ChangeCity的方法里
     },
 
 

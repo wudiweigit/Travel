@@ -10,8 +10,13 @@
 
         </div>
         <router-link to="/city">
-            <div class="header-right">
-                {{this.$store.state.city}}
+            <!-- <div class="header-right">
+                {{this.$store.state.city}} -->
+                    <!-- 【   映射   】 -->
+                <!-- <div class="header-right">
+                        {{this.city}} -->
+                <div class="header-right">
+                    {{this.doubleCity}}
                 <span class="iconfont arrow-icon">&#xe64a;</span>
             </div>
         </router-link>
@@ -21,11 +26,19 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex'    //vuex 提供了个高级API
+
 
 export default {
         name: 'HomeHeader',
         props: {
             // city: String  //接收 home 传过来的值且内容类型为 string
+        },
+        computed: {
+            //展开运算符
+            ...mapState( ['city'] ),    //指把 vuex中的数据映射到到组件的 computed 的计算属性
+
+            ...mapGetters([ 'doubleCity' ])
         }
     }
 
@@ -62,10 +75,11 @@ export default {
         padding-left: .2rem
         color: #ccc
     .header-right
-        width: 1.24rem
+        min-width: 1.04rem
         float: right
         text-align: center
         color: #fff
+        padding: 0 .1rem
         .arrow-icon
             font-size: .24rem
             margin-left: -.04rem

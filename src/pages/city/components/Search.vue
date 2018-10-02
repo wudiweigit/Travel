@@ -22,6 +22,8 @@
 
 // 引入滚动组件
 import Bscroll from 'better-scroll'
+
+import { mapState, mapMutations } from 'vuex'    //vuex 提供了个高级API
 export default{
 
     name: 'CitySearch',
@@ -73,10 +75,13 @@ export default{
             // 改变 city 调用dispatch方法 【 异步操作】
             // this.$store.dispatch('changeCity', city)  //派发一个 changeCity的 actions 进行 异步操作
             //  【 同步操作】
-            this.$store.commit('ChangeCity', city)
+            // this.$store.commit('ChangeCity', city)
             this.$router.push('/') //进行跳转
+            this.ChangeCity(city)
+            this.$router.push('/') //进行跳转
+        },
+        ...mapMutations([ 'ChangeCity' ]) //我们有个mutations叫做 changeCity 然后我把mutations映射到我这个组件里面一个名字叫做changeCity的方法里
 
-        }
     },
 }
 
