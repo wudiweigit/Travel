@@ -11,14 +11,22 @@
                 </div>
             </div>
         </div>
+        <fade-animation>
         <!-- 使用变量【showGallary】控制画廊显示、隐藏 -->
-        <common-gallary :imgs="bannerImgs" v-show="showGallary" @close="handleGallaryClose"></common-gallary>
+            <common-gallary :imgs="bannerImgs" v-show="showGallary" 
+                @close="handleGallaryClose"
+            >
+            </common-gallary>
+        </fade-animation>
     </div>
 </template>
 
 <script>
 // 引入画廊组件 CommonGallary
 import CommonGallary from 'common/gallary/Gallary'       //在webpack.base.conf.js 配置别名
+
+// 引入动画组件
+import FadeAnimation from 'common/fade/FadeAnimation'
 
 export default {
     name: 'Banner',
@@ -28,7 +36,8 @@ export default {
         bannerImgs: Array
     },
     components: {
-        CommonGallary
+        CommonGallary,
+        FadeAnimation
     },
     data(){
         return {
