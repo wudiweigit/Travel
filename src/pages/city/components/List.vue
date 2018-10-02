@@ -1,4 +1,5 @@
 <template>
+
     <!-- 帮助我们获取 DOM 【 ref 】 -->
     <div class="list" ref="wrapper">
         <div>

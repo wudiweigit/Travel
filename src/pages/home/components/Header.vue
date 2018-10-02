@@ -13,10 +13,10 @@
             <!-- <div class="header-right">
                 {{this.$store.state.city}} -->
                     <!-- 【   映射   】 -->
-                <!-- <div class="header-right">
-                        {{this.city}} -->
                 <div class="header-right">
-                    {{this.doubleCity}}
+                        {{this.city}}
+                <!-- <div class="header-right">
+                    {{this.doubleCity}} -->
                 <span class="iconfont arrow-icon">&#xe64a;</span>
             </div>
         </router-link>

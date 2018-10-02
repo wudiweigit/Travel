@@ -87,11 +87,11 @@ Vue.use(Vuex)
     // mutations:  mutations
     state,
     mutations,
-    getters: {  //getters类似于组件中 computed 当我们需要根据 state 中的数据算出新的数据时我们就可以借助 getters这样的工具来提供新的数据这样的话可以避免数据的冗余
-        doubleCity( state ){
-            return state.city + '' + state.city
-        }
-    }
+    // getters: {  //getters类似于组件中 computed 当我们需要根据 state 中的数据算出新的数据时我们就可以借助 getters这样的工具来提供新的数据这样的话可以避免数据的冗余
+    //     doubleCity( state ){
+    //         return state.city + '' + state.city
+    //     }
+    // }
 
  })
 
