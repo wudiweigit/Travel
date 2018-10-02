@@ -26,6 +26,7 @@ export default {
     },
     methods: {
         handeScroll(){
+            console.log('scroll')
             const top = document.documentElement.scrollTop
             if( top > 60 ){
 
@@ -36,12 +37,16 @@ export default {
             }else{
                 this.showAbs = true
             }
-            console.log(document.documentElement.scrollTop)
+            // console.log(document.documentElement.scrollTop)
         }
     },
-    activated(){
-        window.addEventListener('scroll', this.handeScroll)
-    }
+
+    activated(){ //页面展示时会执行钩子
+        window.addEventListener('scroll', this.handeScroll)     // 页面展示时去监听scroll事件 
+    },
+    deactivated() { // 页面即将被隐藏或者页面即将被替换成新的页面时执行
+        window.removeEventListener('scroll', this.handeScroll)   // 页面被隐藏时去移除监听scroll事件
+    },
 }
 
 </script>
